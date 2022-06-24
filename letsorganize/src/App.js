@@ -2,11 +2,7 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import React from "react";
-import Dashboard from './components/Dashboard';
-import Overview from './components/Overview';
-import RemoveItem from './components/RemoveItem';
-import SellYourItem from './components/SellYourItem';
-import UpdateItem from './components/UpdateItem';
+
 import DashboardPage from './components/DashboardPage';
 import OverviewPage from './components/OverviewPage';
 import RemoveItemPage from './components/RemoveItemPage';
@@ -22,7 +18,7 @@ class App extends React.Component {
     this.state = {
       
       view: "OverView",
-      Data:[],
+      data:[],
       
 
       }; 
@@ -31,8 +27,15 @@ class App extends React.Component {
     this.BringClothes=this.BringClothes.bind(this)
     }
 BringClothes(){
-  axios.get("/clothes").then(response=>{
-    this.setState({Data:response.data})
+  console.log("bringcolthes is invoked")
+  axios.get("/clothes").then((error ,response)=>{
+    if(error){
+      console.log(error)
+    }
+    else{
+
+      this.setState({Data:response.data})
+    }
   })
 }
  
@@ -59,7 +62,7 @@ BringClothes(){
 
   else if(this.state.view==="Overview"){
       return(
-        <OverviewPage/>
+        <OverviewPage data={this.state.data}/>
       )
    }
    else if(this.state.view==="RemoveItem"){

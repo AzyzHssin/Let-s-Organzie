@@ -8,6 +8,7 @@ app.use(express.urlencoded({extended: true}));
 
 
 app.get("/clothes",(req,res)=>{
+  console.log("i m inside the express")
     let sql='SELECT * FROM `clothes`;'
     conn.query(sql, function (error, results, fields) {
             if(error) res.status(500).send(error);
