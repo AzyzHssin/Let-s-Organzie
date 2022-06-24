@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* ______________________________________________________________________________________ */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+body {
+  overflow-x: hidden;
+  
+  
+}
+
+/* Toggle Styles */
+
+#viewport {
+  padding-left: 250px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#content {
+  width: 100%;
+  position: relative;
+  margin-right: 0;
+}
+
+/* Sidebar Styles */
+
+#sidebar {
+  font-family:  'Bangers', cursive;
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 250px;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #37474F;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar header {
+  background-color: #263238;
+  font-size: 20px;
+  line-height: 52px;
+  text-align: center;
+  font-family:  'Bangers', cursive;
+}
+
+#sidebar header a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar header a:hover {
+  color: #fff;
+}
+
+#sidebar .nav{
+  
+}
+
+#sidebar .nav .element{
+  background: none;
+  border-bottom: 1px solid #455A64;
+  color: #CFD8DC;
+  font-size: 20px;
+  padding: 16px 24px;
+  margin-left:-50px;
+  font-family:  'Bangers', cursive;
+}
+
+#sidebar .nav .element:hover{
+  background: none;
+  color: #ECEFF1;
+  font-size: 30px;
+}
+
+#sidebar .nav .element i{
+  margin-right: 16px;
+}
+.middle{
+  align-items: center;
+  width: 1200px;
+  height: auto;
+  border-color: black;
+  border-width: 3px;
+  border-style: double;
+  background-color: red;
+  margin-left: 270px;
+
+}
