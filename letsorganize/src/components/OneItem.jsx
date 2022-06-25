@@ -3,12 +3,12 @@ import React from "react";
 const OneItem = (props) => (
     
     <div className="container">
-        <img src={props.data.imageUrl}/>
-        <p className="name">{props.data.name}</p>
-        <p className="price">{props.data.price} DT</p>
-        <p className="instock">{props.data.inStock}</p>
-        <p className="articleLeft">{props.data.articleLeft} article left</p>
-        <button class="button"><span class="heart" onClick={props.addToFavorite(props.data)}></span></button>
+        <img src={props.dataelement.imageUrl}/>
+        <p className="name">{props.dataelement.name}</p>
+        <p className="price">{props.dataelement.price} DT</p>
+        <p className="instock">{props.dataelement.inStock}</p>
+        <p className="articleLeft">{props.dataelement.articleLeft} article left</p>
+        <div class="button" onClick={props.addToFavorite(props.dataelement)}><span class="heart" ></span></div>
         
 </div>
 );

@@ -3,7 +3,7 @@ import React from "react";
 import Favorite from "./Favorite";
 import Overview from "./Overview";
 import RemoveItem from "./RemoveItem";
-import SellYourItem from "./SellYourItem";
+import BuyYourItem from "./BuyYourItem";
 import UpdateItem from "./UpdateItem";
 
 
@@ -18,9 +18,8 @@ const Navbar = (props) => (
       
       <Favorite changeView={props.changeView}/>
       <Overview changeView={props.changeView}  /* BringClothes={props.BringClothes} *//>
-      <SellYourItem changeView={props.changeView}/>
-      <RemoveItem changeView={props.changeView}/>
-      <UpdateItem changeView={props.changeView}/>
+      <BuyYourItem changeView={props.changeView}/>
+      
       
       
       

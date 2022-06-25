@@ -6,9 +6,10 @@ import $ from "jquery"
 import FavoritePage from './components/FavoritePage';
 import OverviewPage from './components/OverviewPage';
 import RemoveItemPage from './components/RemoveItemPage';
-import SellYourItemPage from './components/SellYourItemPage';
+import SellYourItemPage from './components/BuyYourItemPage';
 import UpdateItemPage from './components/UpdateItemPage';
 import axios from "axios"
+import BuyYourItemPage from './components/BuyYourItemPage';
 class App extends React.Component {
   constructor(props) {
     
@@ -17,7 +18,7 @@ class App extends React.Component {
    
     this.state = {
       FavoriteData:[],
-      view: "OverView",
+      view: "",
       bigdata:[
         {"id":1000,"name":"Black Tshirt","price":40.0,"imageUrl":"https://static.bershka.net/4/photos2/2022/I/0/2/p/2695/880/800/e8df891e9dda9a5adf50189c326ff3d7-2695880800_2_13_0.jpg?cropfixwidth=2052&imwidth=750&impolicy=bershka-crop-fix-width-itxmedium","inStock":"InStock","articleLeft":11,"categorie":"Tshirt"},{"id":111,"name":"Black Hoodie","price":80.9,"imageUrl":"https://static.bershka.net/4/photos2/2022/V/0/2/p/2234/498/800/b86d18c854e20950cbfd4c18855df34a-2234498800_2_4_0.jpg?cropfixwidth=2052&imwidth=750&impolicy=bershka-crop-fix-width-itxmedium","inStock":"InStock","articleLeft":17,"categorie":"hoodies"},
       {"id":222,"name":"Purple Hoodie","price":80.9,"imageUrl":"https://static.bershka.net/4/photos2/2022/V/0/2/p/2233/478/612/8427cbb56ca137f787c15f5e53c55dd7-2233478612_2_4_0.jpg?cropfixwidth=2052&imwidth=750&impolicy=bershka-crop-fix-width-itxmedium","inStock":"InStock","articleLeft":4,"categorie":"hoodies"},
@@ -44,6 +45,12 @@ class App extends React.Component {
       
 
       }; 
+
+      var total=0
+      this.state.FavoriteData.forEach(element => {
+        total+=element.price;
+      });
+      this.state.total=total
      /*  this.changeViewSearch=this.changeViewSearch.bind(this) */
     this.changeView = this.changeView.bind(this);
     this.addToFavorite= this.addToFavorite.bind(this);
@@ -68,6 +75,7 @@ class App extends React.Component {
 
   addToFavorite(article){
     var filtered=this.state.FavoriteData.filter((element)=>element.id===article.id)
+    console.log(filtered)
     if(filtered.length==0){
 
       this.state.FavoriteData.push(article)
@@ -77,6 +85,13 @@ class App extends React.Component {
   
 
   renderView() {
+    if(this.state.view===""){
+      return(
+       <h1 className='home' >Welcome to our showroom</h1>
+       
+       
+      )
+      }
    if(this.state.view==="Favorite"){
     return(
       <FavoritePage data={this.state.FavoriteData}/>
@@ -93,9 +108,10 @@ class App extends React.Component {
       <RemoveItemPage/>
     )
  }
- else if(this.state.view==="SellYourItem"){
+ else if(this.state.view==="BuyYourItem"){
+ 
   return(
-    <SellYourItemPage/>
+    <BuyYourItemPage data={this.state.bigdata} total={this.state.total}/>
   )
 }
 else if(this.state.view==="UpdateYourItem"){

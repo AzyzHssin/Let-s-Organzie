@@ -216,3 +216,75 @@ color:#263238;
 .heart::after {
   top: -50%;
 }
+.headpage{
+  font-family:'Bangers', cursive ;
+  font-size: 40px;
+  text-align: center;
+  
+}
+.home{
+  align-items: center;
+  font-family:'Bangers', cursive ;
+  font-size:180px ;
+  text-align: center;
+  margin-top: 200px;
+}
+.container2{
+  display:inline-flex;
+  height: 75px;
+  
+grid-auto-flow: row;
+grid-column-gap: 10px;
+  margin :10px;
+  width: 900px;
+  margin: 20px auto;
+  margin-top:20px;
+  border-radius:15px;
+  box-shadow: 1px 2px 10px 0px rgba(0,0,0,0.3);
+ background: white; /* Old browsers */
+}
+.container:hover{
+  border-color: rgb(162, 162, 216);
+  border-width: 3px;
+  border-style: groove;
+  }
+
+  .price2{
+    font-size:20px;
+    color:#ec4989 ;
+    margin-left: -110px;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  .instock2{
+    font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-size: 20px;
+  margin :50px;
+  margin-left: 500px;
+  }
+  .img2{
+    width: 150px;
+    height: 150px;
+  }
+  .TotalBox{
+    margin-left: 900px;
+    width: 300px;
+    height: 100px;
+    background-color: #cecece;
+    text-align: center;
+
+  }
+  .totalmessage{
+    font-size: 20px;
+    font-family:'Bangers', cursive; 
+  }
+  .total{
+    color: red;
+    font-family:'Source Sans Pro', sans-serif ;
+  }
+  .send{
+    background-color: red;
+    width: 200px;
+    font-size: 30px;
+    margin :20px;
+  }
