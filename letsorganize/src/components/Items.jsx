@@ -1,6 +1,6 @@
 import React from "react";
 
-const OneItem = (props) => (
+const Items = (props) => (
     
     <div className="container">
         <img src={props.data.imageUrl}/>
@@ -8,9 +8,10 @@ const OneItem = (props) => (
         <p className="price">{props.data.price} DT</p>
         <p className="instock">{props.data.inStock}</p>
         <p className="articleLeft">{props.data.articleLeft} article left</p>
-        <button class="button"><span class="heart" onClick={props.addToFavorite(props.data)}></span></button>
+    
         
 </div>
 );
 
-export default OneItem;
+export default Items;
+//remove item 

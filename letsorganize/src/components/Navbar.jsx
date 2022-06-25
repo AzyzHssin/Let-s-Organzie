@@ -1,6 +1,6 @@
 
 import React from "react";
-import Dashboard from "./Dashboard";
+import Favorite from "./Favorite";
 import Overview from "./Overview";
 import RemoveItem from "./RemoveItem";
 import SellYourItem from "./SellYourItem";
@@ -16,8 +16,8 @@ const Navbar = (props) => (
     </header>
     <ul className="nav">
       
-      <Dashboard changeView={props.changeView}/>
-      <Overview changeView={props.changeView} BringClothes={props.BringClothes}/>
+      <Favorite changeView={props.changeView}/>
+      <Overview changeView={props.changeView}  /* BringClothes={props.BringClothes} *//>
       <SellYourItem changeView={props.changeView}/>
       <RemoveItem changeView={props.changeView}/>
       <UpdateItem changeView={props.changeView}/>
