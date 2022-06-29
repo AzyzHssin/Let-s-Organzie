@@ -113,7 +113,7 @@ body {
   
 
 
-.container{
+.container3{
   display:inline-block;
   height: 630px;
   
@@ -129,7 +129,10 @@ grid-column-gap: 10px;
 
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9bc635', endColorstr='#c0ea67',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
-.container:hover{
+.form-group{
+  align-items: center;
+}
+.container3:hover{
 border-color: rgb(202, 200, 200);
 border-width: 3px;
 border-style: groove;
@@ -220,7 +223,7 @@ color:#263238;
   font-family:'Bangers', cursive ;
   font-size: 40px;
   text-align: center;
-  
+  letter-spacing: 2px;
 }
 .home{
   align-items: center;
@@ -228,6 +231,9 @@ color:#263238;
   font-size:180px ;
   text-align: center;
   margin-top: 200px;
+}
+.home:hover{
+  color: #0393b3;
 }
 .container2{
   display:inline-flex;
@@ -243,7 +249,7 @@ grid-column-gap: 10px;
   box-shadow: 1px 2px 10px 0px rgba(0,0,0,0.3);
  background: white; /* Old browsers */
 }
-.container:hover{
+.container3:hover{
   border-color: rgb(162, 162, 216);
   border-width: 3px;
   border-style: groove;
@@ -265,6 +271,8 @@ grid-column-gap: 10px;
   .img2{
     width: 150px;
     height: 150px;
+    box-shadow: 1px 2px 10px 0px rgba(0,0,0,0.3);
+    border-radius:15px;
   }
   .TotalBox{
     margin-left: 900px;
@@ -287,4 +295,23 @@ grid-column-gap: 10px;
     width: 200px;
     font-size: 30px;
     margin :20px;
+  }
+  .deletButton{
+    background-color: rgb(250, 184, 184);
+    width: 145px;
+    height: 30px;
+    color: white;
+    border: 1px solid black;;
+    border-radius: 3px;
+    margin-bottom: -350px;
+    display: flex;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    margin :5px;
+    margin-left: 75px;
+  }
+  .deletButton:hover{
+    background-color: red;
+/*     background-image: url("https://cdn5.vectorstock.com/i/1000x1000/47/74/delete-button-vector-3374774.jpg"); */
   }

@@ -13,8 +13,8 @@ return(
  })
 }
 <div className="TotalBox">
-   <p className="totalmessage">your Total is <p>{props.total}</p> </p>
-   <button className="send" onClick={alert("Your Clothes will be sended you soon")}>Buy Now</button>
+   <p className="totalmessage">Payment amount <p>{props.total}</p> </p>
+   <button className="send" onClick={()=>{props.changeView("form");}}>Buy Now</button>
    </div>
 </div>
 );

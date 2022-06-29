@@ -9,7 +9,7 @@ const FavoritePage = (props) => (
          let key=element.id
       return(  
           
-      <Items dataelement={element} key={key} /* addToFavorite={props.addToFavorite} */ />
+      <Items dataelement={element} key={key} addToFavorite={props.addToFavorite} deleteClothe={props.deleteClothe}/>
       )
        })
 }

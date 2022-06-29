@@ -1,12 +1,91 @@
 const express = require('express');
 const cors = require('cors')
 //Create an Express App
+const {connection} = require("./database/index")
 const app = express();
-app.use(cors)
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-const  clothesRoute= require('./routes/clothes');
-app.use("/",clothesRoute)
+
+app.get('/overview', (req, res) => {  
+  console.log("hello im in")
+  const sqlget=`select * from clothes;`
+  connection.query(sqlget,function(err,result){
+    if(err){res.status(500).send(error);}
+    else{
+      res.json(result)
+    }
+  })
+});
+app.post("/overview",function(req,res){
+  console.log(req.body)
+  const sqlpost=`insert into clothes(name,price,imageUrl,inStock,articleLeft)  values(?,?,?,?,?);`
+  connection.query(sqlpost,[req.body.name,req.body.price,req.body.imageUrl,req.body.inStock,req.body.articleLeft],function(error,results,fields){
+    if(error){
+      res.status(500).send(error);
+    }
+    else{
+      res.send("Clothes was added to database successfully")
+    }
+  })
+})
+/* ------------------------------------------------------------------------------- */
+app.post("/favorites",function(req,res){
+  console.log(req.body)
+  const sqlpost=`insert into favorites(name,price,imageUrl,inStock,articleLeft)  values(?,?,?,?,?);`
+  connection.query(sqlpost,[req.body.name,req.body.price,req.body.imageUrl,req.body.inStock,req.body.articleLeft],function(error,results,fields){
+    if(error){
+      res.status(500).send(error);
+    }
+    else{
+      res.send("Clothes was added to database successfully")
+    }
+  })
+})
+
+app.get('/favorites', (req, res) => {  
+  
+  const sqlget=`select * from favorites;`
+  connection.query(sqlget,function(err,result){
+    if(err){res.status(500).send(error);}
+    else{
+      res.json(result)
+    }
+  })
+});
+
+app.delete("/deleteFavorite/:id",(req,res)=>{
+  console.log(req.params.id,"the id to delete")
+
+  const sqldelete =`DELETE FROM favorites WHERE idcolthes=${req.params.id};`
+  connection.query(sqldelete,function(error,results){
+    if(error){res.status(500).send(error);}
+    else{
+      res.send("Clothes was deleted successfully")
+    }
+  })
+})
+app.post("/Task",function(req,res){
+  console.log(req.body)
+  const sqlpost=`insert into Tasks(firstname,lastname,email,phone,adresse,Description)  values(?,?,?,?,?,?);`
+  connection.query(sqlpost,[req.body.firstname,req.body.lastname,req.body.email,req.body.phone,req.body.adresse,req.body.Description],function(error,results,fields){
+    if(error){
+      res.status(500).send(error);
+    }
+    else{
+      res.send("the delivery will be send to in in less than 48 hours")
+    }
+  })
+})
+app.get("/Task",function(req,res){
+  const sqlgetTask=`select * from Tasks;`
+  connection.query(sqlgetTask,function(err,result){
+    if(err){res.status(500).send(error);}
+    else{
+      res.json(result)
+    }
+  })
+})
 let port = 3001;
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
