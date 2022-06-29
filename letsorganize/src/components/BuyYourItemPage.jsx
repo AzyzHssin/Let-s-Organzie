@@ -13,7 +13,7 @@ return(
  })
 }
 <div className="TotalBox">
-   <p className="totalmessage">Payment amount <p>{props.total}</p> </p>
+   <p className="totalmessage">Payment amount <p className="money">{props.total}</p> </p>
    <button className="send" onClick={()=>{props.changeView("form");}}>Buy Now</button>
    </div>
 </div>

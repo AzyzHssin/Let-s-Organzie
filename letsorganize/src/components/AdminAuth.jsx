@@ -1,6 +1,7 @@
 
 
 import React from "react";
+import axios from "axios";
 class AdminAuth extends React.Component{
     constructor(props){
         super(props)
@@ -14,6 +15,8 @@ class AdminAuth extends React.Component{
       password:""
     };
     }
+   
+    
     handleChangeUsername(event) {
       
          this.setState({[event.target.id] : event.target.value});
@@ -49,7 +52,7 @@ class AdminAuth extends React.Component{
       <label className="passwordlabel">Password</label>
     </div>
     
-    <a onClick={()=>{props.VerifyAdmin}} >
+    <a onClick={()=>{this.props.VerifyAdmin(this.state.username,this.state.password);}} >
       
       Submit
     </a>

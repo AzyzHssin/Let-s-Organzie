@@ -19,6 +19,7 @@ class App extends React.Component {
       FavoriteData:[],
       view: "",
       bigdata:[],
+      tasks:[]
       
 
       }; 
@@ -31,8 +32,22 @@ class App extends React.Component {
     
     }
     /* ------------------------------------------------------------ */
+    componentDidMount(){
+      this.fetchingtasks()
+      
+  }
+  fetchingtasks(){
+    axios.get("http://localhost:3001/Task").then(result=>{
+      
+      this.setState({
+          tasks:result.data
+      })
+      
+  })
+  }
    componentDidUpdate(){
     this.fetchingFavoritedata()
+    this.fetchingtasks()
    }
     fetchingdata(){
       axios.get("http://localhost:3001/overview").then(result=>{
@@ -68,7 +83,7 @@ class App extends React.Component {
      VerifyAdmin(username,password){
       //when you hundle in express just check rakia and aziz
       
-       if((username=="AzizHssin" && password=="TOMORROWLAND2018")||(username=="Rakia" && password=="12345")){
+       if((username==="AzizHssin" && password==="TOMORROWLAND2018")||(username==="Rakia" && password==="12345")){
         this.changeView("AdminPage")
        }
        else{
@@ -109,12 +124,25 @@ class App extends React.Component {
       
     
   }
+  
+
 addTask(task){
   axios.post("http://localhost:3001/Task",task).then(result=>{
     console.log("added to Tasks database")
    })
 }
-  
+deletetask(id){
+  console.log("delete task invoked")
+  axios.delete(`http://localhost:3001/task/${id}`).then(result=>{
+    console.log(result)
+
+   })
+}
+UpdateTask(id){
+  axios.put(`http://localhost:3001/Tasks/${id}`,{obj:"YES"}).then(result=>{
+    console.log(result)
+   })
+}
 
   renderView() {
     if(this.state.view===""){
@@ -146,13 +174,13 @@ addTask(task){
 else if(this.state.view==="AdminAuth"){
  
   return(
-    <AdminAuth  changeView={this.changeView} VerifyAdmin={this.VerifyAdmin}/>
+    <AdminAuth  changeView={this.changeView} VerifyAdmin={this.VerifyAdmin} />
   )
  }
  else if(this.state.view==="AdminPage"){
  
   return(
-    <AdminPage  />
+    <AdminPage tasks={this.state.tasks} deletetask={this.deletetask} UpdateTask={this.UpdateTask} />
   )
  }
  else if(this.state.view==="form"){

@@ -13,7 +13,7 @@ class FormPage extends React.Component{
         email:"",
         phone:"",
         adresse:"",
-        Description:"",
+        Description:"NO",
     };
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangeLastname = this.handleChangeLastname.bind(this);
@@ -21,7 +21,7 @@ class FormPage extends React.Component{
     this.handleChangePhone = this.handleChangePhone.bind(this);
     this.handleChangeAdresse = this.handleChangeAdresse.bind(this);
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
-
+    
     }
     handleChangeUsername(event){
         this.setState({[event.target.id] : event.target.value});
@@ -55,8 +55,7 @@ class FormPage extends React.Component{
     }
     handleSubmit(event){
         event.preventDefault(); 
-        alert("Your Clothes will be sended to you soon")
-        this.props.addTask(this.state)
+        
     }
     render(){
        return( <div>
@@ -96,13 +95,10 @@ class FormPage extends React.Component{
               <input id="phone" className="form-control" type="text" onChange={this.handleChangePhone}></input>
           </div>
           <div className="form-group">
-              <label for="Adresse">Addresse</label>
+              <label for="Adresse">Address</label>
               <input id="adresse" className="form-control" type="text" onChange={this.handleChangeAdresse}></input>
           </div>
-          <div className="form-group">
-              <label for="Description">Description</label>
-              <input id="Description" className="form-control" type="text" onChange={this.handleChangeDescription}></input>
-          </div>
+          
           
           
           <div class="zip-code-group form-group">
@@ -112,7 +108,7 @@ class FormPage extends React.Component{
                   <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-placement="left" data-content="Enter the ZIP/Postal code for your credit card billing address."><i class="fa fa-question-circle"></i></a>
               </div>
           </div>
-          <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit" onClick={this.handleSubmit}>
+          <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit" onClick={()=>{this.props.addTask(this.state);alert("Your Clothes will be sended to you soon");}}>
               <span class="submit-button-lock"></span>
               <span class="align-middle">Pay {this.props.money}</span>
           </button>

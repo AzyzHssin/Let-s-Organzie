@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.get('/overview', (req, res) => {  
-  console.log("hello im in")
+  
   const sqlget=`select * from clothes;`
   connection.query(sqlget,function(err,result){
     if(err){res.status(500).send(error);}
@@ -73,19 +73,45 @@ app.post("/Task",function(req,res){
       res.status(500).send(error);
     }
     else{
-      res.send("the delivery will be send to in in less than 48 hours")
+      res.json("the delivery will be send to in in less than 48 hours")
     }
   })
 })
-app.get("/Task",function(req,res){
-  const sqlgetTask=`select * from Tasks;`
-  connection.query(sqlgetTask,function(err,result){
+app.delete("/task/:id",function(req,res){
+  console.log(req.params.id,"the id to delete")
+
+  const sqldelete =`DELETE FROM Tasks WHERE id=${req.params.id};`
+  connection.query(sqldelete,function(err,result){
     if(err){res.status(500).send(error);}
     else{
       res.json(result)
     }
   })
 })
+
+app.get("/Task",function(err,res){
+  const sqlget=`select * from Tasks;`
+  connection.query(sqlget,function(err,result){
+    if(err){res.status(500).send(error);}
+    else{
+      res.json(result)
+    }
+  })
+})
+app.put("/Tasks/:id",(req,res)=>{
+  console.log(req.body)
+  console.log(req.params)
+  console.log("im inside update")
+  const sqlupdate =`UPDATE Tasks SET Description = "YES" WHERE id=${req.params.id};`
+  connection.query(sqlupdate,function(error,results){
+    if(error){res.status(500).send(error);}
+    else{
+      res.send("Todo was updated successfully")
+    }
+  })
+})
+
+
 let port = 3001;
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
